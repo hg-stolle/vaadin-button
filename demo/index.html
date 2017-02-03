@@ -16,10 +16,33 @@
 
     <demo-navigation></demo-navigation>
 
-    <h3>Sample example</h3>
+    <h3>Default button</h3>
     <demo-snippet>
       <template>
         <vaadin-button></vaadin-button>
+      </template>
+    </demo-snippet>
+
+    <h3>Button with autofocus</h3>
+    <demo-snippet>
+      <template>
+        <vaadin-button autofocus></vaadin-button>
+      </template>
+    </demo-snippet>
+
+    <h3>Buttons with custom tabindex</h3>
+    <demo-snippet>
+      <template>
+        <vaadin-button tabindex="3"></vaadin-button>
+        <vaadin-button tabindex="2"></vaadin-button>
+        <vaadin-button tabindex="1"></vaadin-button>
+      </template>
+    </demo-snippet>
+
+    <h3>Disabled button</h3>
+    <demo-snippet>
+      <template>
+        <vaadin-button disabled></vaadin-button>
       </template>
     </demo-snippet>
   </div>

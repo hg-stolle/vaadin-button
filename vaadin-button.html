@@ -22,9 +22,15 @@ This program is available under Apache License Version 2.0, available at https:/
   <template>
     <style>
       :host {
-        display: block;
+        display: inline-block;
       }
     </style>
+    <button id="button"
+        autofocus$="[[autofocus]]"
+        disabled$="[[disabled]]"
+        tabindex$="[[tabindex]]">
+      [[label]]
+    </button>
   </template>
 
   <script>
@@ -36,8 +42,46 @@ This program is available under Apache License Version 2.0, available at https:/
       static get config() {
         return {
           properties: {
+            /**
+             * Specify that this control should have input focus when the page loads.
+             */
+            autofocus: {
+              type: Boolean
+            },
+
+            /**
+             * Indicates that this control is not available for interaction.
+             */
+            disabled: {
+              type: Boolean
+            },
+
+            /**
+             * Button text.
+             */
+            label: {
+              type: String,
+              value: 'Vaadin Button'
+            },
+
+            /**
+             * The position of the element in the tabbing navigation order for the current document.
+             */
+            tabindex: {
+              type: Number,
+              value: 0
+            }
           }
         };
+      }
+
+      ready() {
+        super.ready();
+
+        // Make FF take the focus
+        if (this.autofocus) {
+          this.$.button.focus();
+        }
       }
     }
 

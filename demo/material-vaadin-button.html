@@ -1,0 +1,124 @@
+<dom-module id="material-vaadin-button">
+  <template>
+    <style>
+    vaadin-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border-radius: 2px;
+      min-height: 36px;
+      min-width: 64px;
+      color: rgba(0,0,0,0.87);
+      font-family: Roboto, sans-serif;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 16px;
+      position: relative;
+      overflow: hidden;
+      transition: background-color: 0.3s;
+      outline: none;
+
+      --vaadin-button__button: {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        color: inherit;
+        font: inherit;
+        text-transform: inherit;
+        width: auto;
+        height: auto;
+        outline: none;
+      }
+
+      --material-button__ripple-offset-x: 50%;
+      --material-button__ripple-offset-y: 50%;
+    }
+
+    vaadin-button[keyboard-focus]::before {
+      opacity: 0.15;
+      transition-duration: 0.2s;
+    }
+
+    vaadin-button::before,
+    vaadin-button::after {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      opacity: 0;
+      background-color: currentColor;
+      transition: opacity 0.5s;
+    }
+
+    vaadin-button::after {
+      border-radius: 50%;
+      width: 300px;
+      height: 300px;
+      top: var(--material-button__ripple-offset-y);
+      left: var(--material-button__ripple-offset-x);
+      transform: translate(-50%, -50%);
+      transition: all 0.9s;
+      transform-origin: inherit;
+    }
+
+    vaadin-button:active::before {
+      opacity: 0.1;
+      transition: opacity 0.4s;
+    }
+
+    vaadin-button:active::after {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0.1;
+      transition: 0s;
+    }
+
+    vaadin-button:hover:not(:active)::after {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+
+    vaadin-button[primary] {
+      color: #3E50B4;
+    }
+
+    vaadin-button[raised] {
+      background-color: #FFF;
+      box-shadow: 0 2px 2px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s;
+    }
+
+    vaadin-button[raised][primary]:not([disabled]) {
+      color: #FFF;
+      background-color: #3E50B4;
+    }
+
+    vaadin-button[primary]:active::before,
+    vaadin-button[primary]:active::after {
+      opacity: 0.2;
+    }
+
+    vaadin-button[raised]:active {
+      box-shadow: 0 3px 16px 1px rgba(0,0,0,0.13), 0 1px 3px 1px rgba(0,0,0,0.08);
+    }
+
+    vaadin-button[disabled] {
+      color: rgba(0,0,0,0.3);
+    }
+
+    vaadin-button[disabled][primary] {
+      color: rgba(0,0,0,0.5);
+    }
+
+    vaadin-button[disabled][raised][primary] {
+      background-color: #F5F5F5;
+    }
+    </style>
+  </template>
+</dom-module>
